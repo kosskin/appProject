@@ -7,11 +7,12 @@
 
 import UIKit
 /// экран корзина
-class BasketViewController: UIViewController {
+final class BasketViewController: UIViewController {
 
+    // MARK: Private Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 }

@@ -7,7 +7,9 @@
 
 import UIKit
 /// экран для вас
-class ForYouViewController: UIViewController {
+final class ForYouViewController: UIViewController {
+    
+    // MARK: Private Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()

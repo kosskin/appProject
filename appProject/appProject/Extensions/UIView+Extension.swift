@@ -16,7 +16,7 @@ extension UIView {
                               width: self.frame.size.width - 10,
                               height: self.frame.size.height)
         border.borderWidth = width
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
+        layer.addSublayer(border)
+        layer.masksToBounds = true
     }
 }

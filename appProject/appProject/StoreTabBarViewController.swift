@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// tabBarControllers: buying, forYou, basket, search, bag
+/// класс для отображения экранов "Поиск", "Покупки", "Корзина", "Для вас" с использованием TabBar
 final class StoreTabBarViewController: UITabBarController {
 
     // MARK: Constants
@@ -17,6 +17,10 @@ final class StoreTabBarViewController: UITabBarController {
         static let basketItemTitle = "Basket"
         static let searchItemTitle = "Поиск"
         static let tabBarColor = UIColor(named: "AppProjectTabBar")
+        static let buyingImage = "laptopcomputer.and.iphone"
+        static let forYouImage = "person.circle"
+        static let searchImage = "magnifyingglass"
+        static let bagImage = "bag"
     }
     
     // MARK: Life cycle
@@ -27,9 +31,9 @@ final class StoreTabBarViewController: UITabBarController {
         createTabsAction()
     }
     
-    // MARK: Private Properties
-    
-    func createTabsAction() {
+    // MARK: Private Methods
+
+    private func createTabsAction() {
         let buyingViewController = BuyingViewController()
         let forYouViewController = ForYouViewController()
         let searchViewController = SearchViewController()
@@ -45,15 +49,15 @@ final class StoreTabBarViewController: UITabBarController {
         navController.tabBarItem.title = Constants.searchItemTitle
         
         buyingViewController.tabBarItem = UITabBarItem(title: Constants.buyingItemTitle,
-                                                       image: UIImage(systemName: "laptopcomputer.and.iphone"), tag: 0)
+                                                       image: UIImage(systemName: Constants.buyingImage), tag: 0)
         forYouViewController.tabBarItem = UITabBarItem(title: Constants.forYouItemTitle,
-                                                       image: UIImage(systemName: "person.circle"),
+                                                       image: UIImage(systemName: Constants.forYouImage),
                                                        tag: 1)
         searchViewController.tabBarItem = UITabBarItem(title: Constants.searchItemTitle,
-                                                       image: UIImage(systemName: "magnifyingglass"),
+                                                       image: UIImage(systemName: Constants.searchImage),
                                                        tag: 2)
         basketViewController.tabBarItem = UITabBarItem(title: Constants.basketItemTitle,
-                                                       image: UIImage(systemName: "bag"), tag: 3)
+                                                       image: UIImage(systemName: Constants.bagImage), tag: 3)
         viewControllers = [buyingViewController, forYouViewController, navController, basketViewController]
     }
 }

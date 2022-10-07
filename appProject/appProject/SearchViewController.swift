@@ -7,7 +7,7 @@
 
 import UIKit
 /// экран поиска
-class SearchViewController: UIViewController, UISearchResultsUpdating {
+final class SearchViewController: UIViewController, UISearchResultsUpdating {
     
     // MARK: Constants
     
@@ -37,7 +37,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
 
     }
     
-    // MARK: private properties
+    // MARK: Visual components
 
     private var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -79,6 +79,20 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
     private lazy var compareIphoneView = makeViewWithSearchAndLabel(text: Constants.compareIphoneViewText,
                                                                 xCoordinate: 5, yCoordinate: 710)
     
+    // MARK: Private Properties
+    
+    private lazy var productList: [(String, String)] = [
+        (Constants.blackCaseViewLabel, Constants.blackCaseViewName),
+        (Constants.watchViewLabel, Constants.watchViewName),
+        (Constants.brownCaseViewLabel, Constants.brownCaseViewName)
+    ]
+    private lazy var productLabelName = String()
+    private lazy var productImageName = String()
+    
+    // MARK: Public Properties
+    
+    var productInfo: (String, String) = ("a", "v")
+    
     // MARK: Life cycle
     
     override func viewDidLoad() {
@@ -86,8 +100,8 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
         configUI()
     }
     
-    // MARK: Configuration UI
-    
+    // MARK: Private Methods
+
     func configUI() {
         view.backgroundColor = Constants.backgroundColor
         view.addSubview(recentViewLabel)
@@ -108,24 +122,11 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
         view.addSubview(compareIphoneView)
     }
     
-    // MARK: Private Methods
-    
     @objc func tapAction(sender: UITapGestureRecognizer) {
         let productViewController = ProductViewController()
-        switch sender.view?.tag {
-        case 0:
-            productViewController.chooseProductImageView.image = UIImage(named: Constants.blackCaseViewName)
-            productViewController.chooseProductLabel.text = Constants.blackCaseViewLabel
-        case 1:
-            productViewController.chooseProductImageView.image = UIImage(named: Constants.watchViewName)
-            productViewController.chooseProductLabel.text = Constants.watchViewLabel
-
-        case 2:
-            productViewController.chooseProductImageView.image = UIImage(named: Constants.brownCaseViewName)
-            productViewController.chooseProductLabel.text = Constants.brownCaseViewLabel
-        default:
-            break
-        }
+        productInfo = productList[sender.view?.tag ?? 0]
+        productViewController.chooseProductLabel.text = productInfo.0
+        productViewController.chooseProductImageView.image = UIImage(named: productInfo.1)
         navigationController?.pushViewController(productViewController, animated: true)
     }
 }

@@ -6,10 +6,10 @@
 //
 
 import UIKit
-/// asd
-class ProductViewController: UIViewController {
-
-    // MARK: Public Properties
+/// экран выбранного продукта
+final class ProductViewController: UIViewController {
+    
+    // MARK: Visual Components
     
     lazy var chooseProductLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 50, y: 150, width: 100, height: 40))
@@ -22,15 +22,15 @@ class ProductViewController: UIViewController {
         return imageView
     }()
     
-    // MARK: Life cycle
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
     }
     
-    // MARK: Configuration UI
-    
+    // MARK: Private Methods
+
     func configUI() {
         view.addSubview(chooseProductLabel)
         view.addSubview(chooseProductImageView)
