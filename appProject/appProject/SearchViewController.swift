@@ -7,7 +7,7 @@
 
 import UIKit
 /// экран поиска
-final class SearchViewController: UIViewController, UISearchResultsUpdating {
+final class SearchViewController: UIViewController {
     
     // MARK: Constants
     

@@ -7,7 +7,7 @@
 
 import UIKit
 /// Расширения для использования протокола UISearchResultsUpdating
-extension SearchViewController {
+extension SearchViewController: UISearchResultsUpdating {
     
     // метод для UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController) {
