@@ -91,7 +91,7 @@ final class SearchViewController: UIViewController {
     
     // MARK: Public Properties
     
-    var productInfo: (String, String) = ("a", "v")
+    var productInfo: (String, String) = ("", "")
     
     // MARK: Life cycle
     
@@ -124,7 +124,8 @@ final class SearchViewController: UIViewController {
     
     @objc func tapAction(sender: UITapGestureRecognizer) {
         let productViewController = ProductViewController()
-        productInfo = productList[sender.view?.tag ?? 0]
+        guard let senderView = self.view else { return }
+        productInfo = productList[senderView.tag]
         productViewController.chooseProductLabel.text = productInfo.0
         productViewController.chooseProductImageView.image = UIImage(named: productInfo.1)
         navigationController?.pushViewController(productViewController, animated: true)
