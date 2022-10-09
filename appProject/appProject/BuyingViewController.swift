@@ -6,14 +6,12 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController {
+/// экран Покупки
+final class BuyingViewController: UIViewController {
+    
+    // MARK: Private Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
-
