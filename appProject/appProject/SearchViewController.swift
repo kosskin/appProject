@@ -213,3 +213,5 @@ extension SearchViewController {
         return button
     }
 }
+
+// MARK: UIScrollViewDelegate
