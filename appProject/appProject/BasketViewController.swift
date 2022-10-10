@@ -9,8 +9,8 @@ import UIKit
 /// экран корзина
 final class BasketViewController: UIViewController {
 
-    // MARK: Private Methods
-    
+    // MARK: Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

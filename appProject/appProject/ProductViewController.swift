@@ -21,12 +21,14 @@ final class ProductViewController: UIViewController {
     Варианты доставки для местоположения: 115533
 """
         static let boxName = "cube.box"
+        static var whiteColor = "whiteColor"
     }
     
     // MARK: Visual Components
     
     lazy var chooseProductLabel = makeLabel(text: chooseProductLabelText, size: 16, weight: .bold,
-                                            xCoordinate: 25, yCoordinate: 120, fontColor: .white)
+                                            xCoordinate: 0, yCoordinate: 120,
+                                            fontColor: UIColor(named: Constants.whiteColor) ?? UIColor.white)
     
     lazy var priceProductLabel = makeLabel(text: chooseProductPrice, size: 15, weight: .regular,
                                            xCoordinate: 150, yCoordinate: 150, fontColor: .systemGray)
@@ -62,6 +64,8 @@ final class ProductViewController: UIViewController {
     lazy var selectColorBlackButton = makeRoundedButton(xCoordinate: 210,
                                                         backColor: .systemGray5, selected: true)
     
+    lazy var blueCirlceButton = makeViewToRoundButton()
+    
     // MARK: Public Properties
     
     lazy var chooseProductLabelText = String()
@@ -74,14 +78,14 @@ final class ProductViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
-        navigationController?.navigationBar.backgroundColor = .secondarySystemBackground
-        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     // MARK: Private Methods
 
     func configUI() {
         view.backgroundColor = .systemBackground
+        chooseProductLabel.center.x = view.center.x
         view.addSubview(chooseProductLabel)
         view.addSubview(priceProductLabel)
         view.addSubview(scrollOneProduct)
@@ -92,6 +96,7 @@ final class ProductViewController: UIViewController {
         if countImages > 2 {
             scrollOneProduct.addSubview(productImageViewThree)
         }
+        smallChooseProductLabel.center.x = view.center.x
         view.addSubview(smallChooseProductLabel)
         view.addSubview(basketButton)
         view.addSubview(viewWithCheck)
@@ -99,18 +104,17 @@ final class ProductViewController: UIViewController {
         view.addSubview(boxImageView)
         view.addSubview(selectColorGrayButton)
         view.addSubview(selectColorBlackButton)
+        view.addSubview(blueCirlceButton)
         configTabbar()
     }
     
     @objc func selectButtonAction(sender: UIButton) {
         if selectColorBlackButton == sender {
-            selectColorGrayButton.isSelected.toggle()
-            selectColorGrayButton.layer.borderColor = UIColor.clear.cgColor
-            selectColorBlackButton.layer.borderColor = UIColor.systemBlue.cgColor
+            blueCirlceButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+            blueCirlceButton.center = selectColorBlackButton.center
         } else {
-            selectColorBlackButton.isSelected.toggle()
-            selectColorBlackButton.layer.borderColor = UIColor.clear.cgColor
-            selectColorGrayButton.layer.borderColor = UIColor.systemBlue.cgColor
+            blueCirlceButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+            blueCirlceButton.center = selectColorGrayButton.center
         }
     }
 }
@@ -128,6 +132,7 @@ extension ProductViewController {
         label.font = UIFont.systemFont(ofSize: size, weight: weight)
         label.text = text
         label.textAlignment = .center
+        label.contentMode = .center
         label.textColor = fontColor
         label.frame = CGRect(x: xCoordinate, y: yCoordinate,
                              width: Int(view.bounds.width), height: 0)
@@ -171,7 +176,7 @@ extension ProductViewController {
     }
     
     func makeViewWithImageView() -> UIView {
-        let uiView = UIView(frame: CGRect(x: 70, y: 630, width: 350, height: 20))
+        let uiView = UIView(frame: CGRect(x: 70, y: 610, width: 350, height: 20))
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         imageView.image = UIImage(systemName: Constants.checkMark)
         imageView.tintColor = .green
@@ -218,13 +223,20 @@ extension ProductViewController {
 
     func makeRoundedButton(xCoordinate: Int, backColor: UIColor,
                            selected: Bool) -> UIButton {
-        let button = UIButton(frame: CGRect(x: xCoordinate, y: 535, width: 35, height: 35))
-        button.layer.cornerRadius = 17.5
+        let button = UIButton(frame: CGRect(x: xCoordinate, y: 535, width: 36, height: 36))
         button.backgroundColor = backColor
-        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 18
         button.isSelected = selected
         button.layer.borderColor = selected ? UIColor.systemBlue.cgColor : UIColor.systemGray.cgColor
         button.addTarget(self, action: #selector(selectButtonAction(sender:)), for: .touchUpInside)
+        return button
+    }
+    
+    func makeViewToRoundButton() -> UIButton {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        button.layer.cornerRadius = 22
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.systemBlue.cgColor
         return button
     }
 }
