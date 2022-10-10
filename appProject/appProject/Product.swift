@@ -9,5 +9,5 @@ import UIKit
 struct Product {
     let name: String
     let price: String
-    let imagesName: [String]
+    let imageNames: [String]
 }

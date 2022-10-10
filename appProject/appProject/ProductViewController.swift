@@ -21,14 +21,14 @@ final class ProductViewController: UIViewController {
     Варианты доставки для местоположения: 115533
 """
         static let boxName = "cube.box"
-        static var whiteColor = "whiteColor"
+        static var whiteColorName = "whiteColor"
     }
     
     // MARK: Visual Components
     
     lazy var chooseProductLabel = makeLabel(text: chooseProductLabelText, size: 16, weight: .bold,
                                             xCoordinate: 0, yCoordinate: 120,
-                                            fontColor: UIColor(named: Constants.whiteColor) ?? UIColor.white)
+                                            fontColor: UIColor(named: Constants.whiteColorName) ?? UIColor.white)
     
     lazy var priceProductLabel = makeLabel(text: chooseProductPrice, size: 15, weight: .regular,
                                            xCoordinate: 150, yCoordinate: 150, fontColor: .systemGray)
@@ -71,7 +71,7 @@ final class ProductViewController: UIViewController {
     lazy var chooseProductLabelText = String()
     lazy var chooseProductImageViewText: [String] = [String]()
     lazy var chooseProductPrice = String()
-    lazy var countImages = Int()
+    lazy var imageCount = Int()
 
     // MARK: Life Cycle
     
@@ -90,10 +90,10 @@ final class ProductViewController: UIViewController {
         view.addSubview(priceProductLabel)
         view.addSubview(scrollOneProduct)
         scrollOneProduct.addSubview(productImageView)
-        if countImages > 1 {
+        if imageCount > 1 {
             scrollOneProduct.addSubview(productImageViewTwo)
         }
-        if countImages > 2 {
+        if imageCount > 2 {
             scrollOneProduct.addSubview(productImageViewThree)
         }
         smallChooseProductLabel.center.x = view.center.x
@@ -109,13 +109,9 @@ final class ProductViewController: UIViewController {
     }
     
     @objc func selectButtonAction(sender: UIButton) {
-        if selectColorBlackButton == sender {
-            blueCirlceButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-            blueCirlceButton.center = selectColorBlackButton.center
-        } else {
-            blueCirlceButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-            blueCirlceButton.center = selectColorGrayButton.center
-        }
+        blueCirlceButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        blueCirlceButton.center = sender == selectColorBlackButton ?
+            selectColorBlackButton.center : selectColorGrayButton.center
     }
 }
 
@@ -144,7 +140,7 @@ extension ProductViewController {
         let scrollViewRect = CGRect(x: 0, y: 220, width: view.bounds.width, height: 200)
         let scrollView = UIScrollView(frame: scrollViewRect)
         scrollView.contentMode = .scaleAspectFit
-        scrollView.contentSize = CGSize(width: Int(scrollView.bounds.width) * countImages,
+        scrollView.contentSize = CGSize(width: Int(scrollView.bounds.width) * imageCount,
                                         height: 200)
         scrollView.indicatorStyle = .white
         scrollView.isPagingEnabled = true

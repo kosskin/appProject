@@ -31,10 +31,10 @@ final class SearchViewController: UIViewController {
         static let brownCaseViewNameTwo = "caseBrown2"
         static let brownCaseViewNameThree = "caseBrown3"
         static let iPhoneViewName = "iPhone"
-        static let blackCaseViewLabel = "Чехол Incase Flat для Macbook Pro 16 дюймов"
-        static let watchViewLabel = "Спортивный ремешок Black Unity (для котиков)"
-        static let brownCaseViewLabel = "Кожаный чехол для Macbook Pro 16 дюймов, золотой"
-        static let iPhoneViewLabel = "IPhone 13 Pro"
+        static let blackCaseViewLabelText = "Чехол Incase Flat для Macbook Pro 16 дюймов"
+        static let watchViewLabelText = "Спортивный ремешок Black Unity (для котиков)"
+        static let brownCaseViewLabelText = "Кожаный чехол для Macbook Pro 16 дюймов, золотой"
+        static let iPhoneViewLabelText = "IPhone 13 Pro"
         static let variableRequestLabelText = "Варианты запросов"
         static let airPodsViewText = "AirPods"
         static let appleCareViewText = "AppleCare"
@@ -64,19 +64,19 @@ final class SearchViewController: UIViewController {
     
     private lazy var blackCaseView = makeViewWithProduct(name: Constants.blackCaseViewName,
                                                     xCoordinate: 0, yCoordinate: 0,
-                                                    textLabel: Constants.blackCaseViewLabel)
+                                                    textLabel: Constants.blackCaseViewLabelText)
     
     private lazy var watchView = makeViewWithProduct(name: Constants.watchViewName,
                                                     xCoordinate: 150, yCoordinate: 0,
-                                                    textLabel: Constants.watchViewLabel)
+                                                    textLabel: Constants.watchViewLabelText)
     
     private lazy var brownCaseView = makeViewWithProduct(name: Constants.brownCaseViewName,
                                                     xCoordinate: 300, yCoordinate: 0,
-                                                    textLabel: Constants.brownCaseViewLabel)
+                                                    textLabel: Constants.brownCaseViewLabelText)
     
     private lazy var iPhoneView = makeViewWithProduct(name: Constants.iPhoneViewName,
                                                       xCoordinate: 450, yCoordinate: 0,
-                                                      textLabel: Constants.iPhoneViewLabel)
+                                                      textLabel: Constants.iPhoneViewLabelText)
 
     private lazy var variableRequestLabel = makeLabel(text: Constants.variableRequestLabelText,
                                                       size: 21, weight: .bold, xCoordinate: 28, yCoordinate: 515)
@@ -98,23 +98,23 @@ final class SearchViewController: UIViewController {
     // MARK: Private Properties
     
     private lazy var productList: [(String, String)] = [
-        (Constants.blackCaseViewLabel, Constants.blackCaseViewName),
-        (Constants.watchViewLabel, Constants.watchViewName),
-        (Constants.brownCaseViewLabel, Constants.brownCaseViewName),
-        (Constants.iPhoneViewLabel, Constants.iPhoneViewName)
+        (Constants.blackCaseViewLabelText, Constants.blackCaseViewName),
+        (Constants.watchViewLabelText, Constants.watchViewName),
+        (Constants.brownCaseViewLabelText, Constants.brownCaseViewName),
+        (Constants.iPhoneViewLabelText, Constants.iPhoneViewName)
     ]
     
     private lazy var products: [Product] = [
-        Product(name: Constants.blackCaseViewLabel, price: Constants.blackCasePrice,
-                imagesName: [Constants.blackCaseViewName, Constants.blackCaseViewNameTwo,
+        Product(name: Constants.blackCaseViewLabelText, price: Constants.blackCasePrice,
+                imageNames: [Constants.blackCaseViewName, Constants.blackCaseViewNameTwo,
                              Constants.blackCaseViewNameThree]),
-        Product(name: Constants.watchViewLabel, price: Constants.watchPrice,
-                imagesName: [Constants.watchViewName, Constants.watchViewNameTwo]),
-        Product(name: Constants.brownCaseViewLabel, price: Constants.brownCasePrice,
-                imagesName: [Constants.brownCaseViewName, Constants.brownCaseViewNameTwo,
+        Product(name: Constants.watchViewLabelText, price: Constants.watchPrice,
+                imageNames: [Constants.watchViewName, Constants.watchViewNameTwo]),
+        Product(name: Constants.brownCaseViewLabelText, price: Constants.brownCasePrice,
+                imageNames: [Constants.brownCaseViewName, Constants.brownCaseViewNameTwo,
                              Constants.brownCaseViewNameThree]),
-        Product(name: Constants.iPhoneViewLabel, price: Constants.iPhoneCasePrice,
-                imagesName: [Constants.iPhoneViewName])
+        Product(name: Constants.iPhoneViewLabelText, price: Constants.iPhoneCasePrice,
+                imageNames: [Constants.iPhoneViewName])
     ]
     
     // MARK: Public Properties
@@ -158,9 +158,9 @@ final class SearchViewController: UIViewController {
         let productViewController = ProductViewController()
         productInfo = products[sender.view?.tag ?? 0]
         productViewController.chooseProductLabelText = productInfo?.name ?? "no product"
-        productViewController.chooseProductImageViewText = productInfo?.imagesName ?? ["no product"]
+        productViewController.chooseProductImageViewText = productInfo?.imageNames ?? ["no product"]
         productViewController.chooseProductPrice = productInfo?.price ?? "no product"
-        productViewController.countImages = productViewController.chooseProductImageViewText.count
+        productViewController.imageCount = productViewController.chooseProductImageViewText.count
         navigationController?.pushViewController(productViewController, animated: true)
     }
 }

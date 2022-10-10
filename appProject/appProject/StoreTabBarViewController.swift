@@ -27,7 +27,6 @@ final class StoreTabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tabBar.backgroundColor = .secondarySystemBackground
         createTabsAction()
     }
     
@@ -40,11 +39,7 @@ final class StoreTabBarViewController: UITabBarController {
         let basketViewController = BasketViewController()
         
         let navController = UINavigationController(rootViewController: searchViewController)
-                
-//        navController.navigationBar.prefersLargeTitles = true
-//        navController.navigationBar.largeTitleTextAttributes =
-//                    [NSAttributedString.Key.foregroundColor: UIColor.white]
-                
+
         searchViewController.navigationItem.title = Constants.searchItemTitle
         navController.tabBarItem.title = Constants.searchItemTitle
         
