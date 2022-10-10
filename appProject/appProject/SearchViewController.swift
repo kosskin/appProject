@@ -23,18 +23,28 @@ final class SearchViewController: UIViewController {
         static let recentViewLabelText = "Недавно просмотренные"
         static let clearButtonTitle = "Очистить"
         static let blackCaseViewName = "Image"
+        static let blackCaseViewNameTwo = "case2"
+        static let blackCaseViewNameThree = "case3"
         static let watchViewName = "4"
+        static let watchViewNameTwo = "clock2"
         static let brownCaseViewName = "2"
+        static let brownCaseViewNameTwo = "caseBrown2"
+        static let brownCaseViewNameThree = "caseBrown3"
+        static let iPhoneViewName = "iPhone"
         static let blackCaseViewLabel = "Чехол Incase Flat для Macbook Pro 16 дюймов"
         static let watchViewLabel = "Спортивный ремешок Black Unity (для котиков)"
         static let brownCaseViewLabel = "Кожаный чехол для Macbook Pro 16 дюймов, золотой"
+        static let iPhoneViewLabel = "IPhone 13 Pro"
         static let variableRequestLabelText = "Варианты запросов"
         static let airPodsViewText = "AirPods"
         static let appleCareViewText = "AppleCare"
         static let beatsViewText = "Beats"
         static let compareIphoneViewText = "Сравните модели iPhone"
         static let searchIconName = "magnifyingglass"
-
+        static let blackCasePrice = "3 990.00 руб."
+        static let brownCasePrice = "3 990.00 руб."
+        static let watchPrice = "13 990.00 руб."
+        static let iPhoneCasePrice = "84 990.00 руб."
     }
     
     // MARK: Visual components
@@ -53,16 +63,20 @@ final class SearchViewController: UIViewController {
                                               xCoordinate: 325, yCoordinate: 225)
     
     private lazy var blackCaseView = makeViewWithProduct(name: Constants.blackCaseViewName,
-                                                    xCoordinate: 20, yCoordinate: 290,
+                                                    xCoordinate: 0, yCoordinate: 0,
                                                     textLabel: Constants.blackCaseViewLabel)
     
     private lazy var watchView = makeViewWithProduct(name: Constants.watchViewName,
-                                                    xCoordinate: 170, yCoordinate: 290,
+                                                    xCoordinate: 150, yCoordinate: 0,
                                                     textLabel: Constants.watchViewLabel)
     
     private lazy var brownCaseView = makeViewWithProduct(name: Constants.brownCaseViewName,
-                                                    xCoordinate: 320, yCoordinate: 290,
+                                                    xCoordinate: 300, yCoordinate: 0,
                                                     textLabel: Constants.brownCaseViewLabel)
+    
+    private lazy var iPhoneView = makeViewWithProduct(name: Constants.iPhoneViewName,
+                                                      xCoordinate: 450, yCoordinate: 0,
+                                                      textLabel: Constants.iPhoneViewLabel)
 
     private lazy var variableRequestLabel = makeLabel(text: Constants.variableRequestLabelText,
                                                       size: 21, weight: .bold, xCoordinate: 28, yCoordinate: 515)
@@ -79,19 +93,33 @@ final class SearchViewController: UIViewController {
     private lazy var compareIphoneView = makeViewWithSearchAndLabel(text: Constants.compareIphoneViewText,
                                                                 xCoordinate: 5, yCoordinate: 710)
     
+    private lazy var productScrollView = makeScrollView()
+    
     // MARK: Private Properties
     
     private lazy var productList: [(String, String)] = [
         (Constants.blackCaseViewLabel, Constants.blackCaseViewName),
         (Constants.watchViewLabel, Constants.watchViewName),
-        (Constants.brownCaseViewLabel, Constants.brownCaseViewName)
+        (Constants.brownCaseViewLabel, Constants.brownCaseViewName),
+        (Constants.iPhoneViewLabel, Constants.iPhoneViewName)
     ]
-    private lazy var productLabelName = String()
-    private lazy var productImageName = String()
+    
+    private lazy var products: [Product] = [
+        Product(name: Constants.blackCaseViewLabel, price: Constants.blackCasePrice,
+                imagesName: [Constants.blackCaseViewName, Constants.blackCaseViewNameTwo,
+                             Constants.blackCaseViewNameThree]),
+        Product(name: Constants.watchViewLabel, price: Constants.watchPrice,
+                imagesName: [Constants.watchViewName, Constants.watchViewNameTwo]),
+        Product(name: Constants.brownCaseViewLabel, price: Constants.brownCasePrice,
+                imagesName: [Constants.brownCaseViewName, Constants.brownCaseViewNameTwo,
+                             Constants.brownCaseViewNameThree]),
+        Product(name: Constants.iPhoneViewLabel, price: Constants.iPhoneCasePrice,
+                imagesName: [Constants.iPhoneViewName])
+    ]
     
     // MARK: Public Properties
     
-    var productInfo: (String, String) = ("", "")
+    var productInfo: Product?
     
     // MARK: Life cycle
     
@@ -103,31 +131,36 @@ final class SearchViewController: UIViewController {
     // MARK: Private Methods
 
     func configUI() {
-        view.backgroundColor = Constants.backgroundColor
+        navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = .systemBackground
         view.addSubview(recentViewLabel)
         view.addSubview(clearButton)
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         definesPresentationContext = true
         blackCaseView.tag = 0
-        view.addSubview(blackCaseView)
+        productScrollView.addSubview(blackCaseView)
         watchView.tag = 1
-        view.addSubview(watchView)
+        productScrollView.addSubview(watchView)
         brownCaseView.tag = 2
-        view.addSubview(brownCaseView)
+        productScrollView.addSubview(brownCaseView)
+        iPhoneView.tag = 3
+        productScrollView.addSubview(iPhoneView)
         view.addSubview(variableRequestLabel)
         view.addSubview(airPodsView)
         view.addSubview(appleCareView)
         view.addSubview(beatsView)
         view.addSubview(compareIphoneView)
+        view.addSubview(productScrollView)
     }
     
     @objc func tapAction(sender: UITapGestureRecognizer) {
         let productViewController = ProductViewController()
-        guard let senderView = self.view else { return }
-        productInfo = productList[senderView.tag]
-        productViewController.chooseProductLabel.text = productInfo.0
-        productViewController.chooseProductImageView.image = UIImage(named: productInfo.1)
+        productInfo = products[sender.view?.tag ?? 0]
+        productViewController.chooseProductLabelText = productInfo?.name ?? "no product"
+        productViewController.chooseProductImageViewText = productInfo?.imagesName ?? ["no product"]
+        productViewController.chooseProductPrice = productInfo?.price ?? "no product"
+        productViewController.countImages = productViewController.chooseProductImageViewText.count
         navigationController?.pushViewController(productViewController, animated: true)
     }
 }
@@ -211,5 +244,17 @@ extension SearchViewController {
         button.sizeToFit()
         button.setTitleColor(.systemBlue, for: .normal)
         return button
+    }
+    
+    func makeScrollView() -> UIScrollView {
+        let scrollViewRect = CGRect(x: 5, y: 290, width: view.frame.width,
+                                    height: 180)
+        let scrollView = UIScrollView(frame: scrollViewRect)
+        scrollView.contentSize = CGSize(width: view.frame.width + 185,
+                                        height: scrollView.frame.height)
+        scrollView.contentMode = .scaleAspectFit
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
     }
 }

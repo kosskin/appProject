@@ -22,6 +22,7 @@
 		BB373DD728EF7C0300F270BC /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB373DD628EF7C0300F270BC /* UIFont+Extension.swift */; };
 		BB373DDA28EFA55800F270BC /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB373DD928EFA55800F270BC /* ProductViewController.swift */; };
 		BB373DDE28EFBFC500F270BC /* SearchViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB373DDD28EFBFC500F270BC /* SearchViewController+Extension.swift */; };
+		BB492D6028F35515002ED7AE /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB492D5F28F35515002ED7AE /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		BB373DD628EF7C0300F270BC /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		BB373DD928EFA55800F270BC /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		BB373DDD28EFBFC500F270BC /* SearchViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+Extension.swift"; sourceTree = "<group>"; };
+		BB492D5F28F35515002ED7AE /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				BB373DD228EF708100F270BC /* Extensions */,
 				BB373DC428EF497A00F270BC /* BasketViewController.swift */,
 				BB373DC128EF494300F270BC /* SearchViewController.swift */,
+				BB492D5F28F35515002ED7AE /* Product.swift */,
 				BB373DD928EFA55800F270BC /* ProductViewController.swift */,
 				BB373DAB28EF261A00F270BC /* Main.storyboard */,
 				BB373DCA28EF4F7500F270BC /* StoreTabBarViewController.swift */,
@@ -200,6 +203,7 @@
 				BB373DD428EF70C000F270BC /* UIView+Extension.swift in Sources */,
 				BB373DDE28EFBFC500F270BC /* SearchViewController+Extension.swift in Sources */,
 				BB373DC228EF494300F270BC /* SearchViewController.swift in Sources */,
+				BB492D6028F35515002ED7AE /* Product.swift in Sources */,
 				BB373DBF28EF492400F270BC /* ForYouViewController.swift in Sources */,
 				BB373DAA28EF261A00F270BC /* BuyingViewController.swift in Sources */,
 				BB373DD728EF7C0300F270BC /* UIFont+Extension.swift in Sources */,
