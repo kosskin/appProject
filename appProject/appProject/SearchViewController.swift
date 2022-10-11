@@ -45,6 +45,10 @@ final class SearchViewController: UIViewController {
         static let brownCasePrice = "3 990.00 руб."
         static let watchPrice = "13 990.00 руб."
         static let iPhoneCasePrice = "84 990.00 руб."
+        static let blackCaseLink = "https://www.apple.com/shop/product/HPZQ2ZM/A/von-holzhausen-macbook-16-portfolio?fnode=f227d8d782412bd8862435df687fce1a888da863688fa95e884651f49f672678425aee0e5ea653ca333d702c03d0dfacd7aba8cdf188b6927280157ee3337b473b51d3e6e78a179b1372386de3ef5b704baa025d1904ae2e70e37788f8f2e20a"
+        static let watchLink = "https://www.apple.com/shop/product/MPDQ3AM/A/41mm-midnight-solo-loop-size-7?fnode=a2c3be7b3b52a65196b260e900aaa46e02f0c3fdc8a896c02e900369795a67a425169bd62cbb7e5c60e3b510a05edeeb6465b634c0ba570c6d4ed51795d29d68e68b70a97342ca1dc4915049718b2395"
+        static let brownCaseLink = "https://www.apple.com/shop/product/HP9F2ZM/A/incase-13-icon-sleeve-with-woolenex-for-macbook-air-and-macbook-pro?fnode=3783cde1f7ddf507ae4719fd66e6c0dda824baf624dc1bdf1a2edb684db604b0d73932b816e3b8f6ab8357ad3e6069e96bbc53dc3b5817b6c7c4f34493c6f99f0e53ef3d4d4cd0bd91fd8a7d9eab2e39bbb0f763f8aa72dec968c6f2513e4baf"
+        static let iPhoneLink = "https://www.apple.com/shop/buy-iphone/iphone-13"
     }
     
     // MARK: Visual components
@@ -97,29 +101,18 @@ final class SearchViewController: UIViewController {
     
     // MARK: Private Properties
     
-    private lazy var productList: [(String, String)] = [
-        (Constants.blackCaseViewLabelText, Constants.blackCaseViewName),
-        (Constants.watchViewLabelText, Constants.watchViewName),
-        (Constants.brownCaseViewLabelText, Constants.brownCaseViewName),
-        (Constants.iPhoneViewLabelText, Constants.iPhoneViewName)
-    ]
-    
-    private lazy var products: [Product] = [
+    private var products: [Product] = [
         Product(name: Constants.blackCaseViewLabelText, price: Constants.blackCasePrice,
                 imageNames: [Constants.blackCaseViewName, Constants.blackCaseViewNameTwo,
-                             Constants.blackCaseViewNameThree]),
+                             Constants.blackCaseViewNameThree], link: Constants.blackCaseLink),
         Product(name: Constants.watchViewLabelText, price: Constants.watchPrice,
-                imageNames: [Constants.watchViewName, Constants.watchViewNameTwo]),
+                imageNames: [Constants.watchViewName, Constants.watchViewNameTwo], link: Constants.watchLink),
         Product(name: Constants.brownCaseViewLabelText, price: Constants.brownCasePrice,
                 imageNames: [Constants.brownCaseViewName, Constants.brownCaseViewNameTwo,
-                             Constants.brownCaseViewNameThree]),
+                             Constants.brownCaseViewNameThree], link: Constants.brownCaseLink),
         Product(name: Constants.iPhoneViewLabelText, price: Constants.iPhoneCasePrice,
-                imageNames: [Constants.iPhoneViewName])
+                imageNames: [Constants.iPhoneViewName], link: Constants.watchLink)
     ]
-    
-    // MARK: Public Properties
-    
-    var productInfo: Product?
     
     // MARK: Life cycle
     
@@ -156,11 +149,13 @@ final class SearchViewController: UIViewController {
     
     @objc func tapAction(sender: UITapGestureRecognizer) {
         let productViewController = ProductViewController()
-        productInfo = products[sender.view?.tag ?? 0]
-        productViewController.chooseProductLabelText = productInfo?.name ?? "no product"
-        productViewController.chooseProductImageViewText = productInfo?.imageNames ?? ["no product"]
-        productViewController.chooseProductPrice = productInfo?.price ?? "no product"
-        productViewController.imageCount = productViewController.chooseProductImageViewText.count
+        guard let index = sender.view?.tag,
+              products.indices.contains(index) else {
+            print("error!")
+            return
+        }
+        productViewController.chooseProduct = products[index]
+        productViewController.imageCount = productViewController.chooseProduct.imageNames.count
         navigationController?.pushViewController(productViewController, animated: true)
     }
 }
