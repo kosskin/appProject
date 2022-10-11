@@ -9,7 +9,7 @@ import UIKit
 /// экран для вас
 final class ForYouViewController: UIViewController {
     
-    // MARK: Private Methods
+    // MARK: Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

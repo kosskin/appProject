@@ -9,7 +9,7 @@ import UIKit
 /// экран Покупки
 final class BuyingViewController: UIViewController {
     
-    // MARK: Private Methods
+    // MARK: Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
