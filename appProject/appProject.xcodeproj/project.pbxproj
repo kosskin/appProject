@@ -91,13 +91,11 @@
 				BB373DBE28EF492400F270BC /* ForYouViewController.swift */,
 				BB373DD228EF708100F270BC /* Extensions */,
 				BB373DC428EF497A00F270BC /* BasketViewController.swift */,
-				BB373DC128EF494300F270BC /* SearchViewController.swift */,
+				BBAC841728F6001400F18648 /* SearchScreen */,
 				BB492D5F28F35515002ED7AE /* Product.swift */,
-				BB373DD928EFA55800F270BC /* ProductViewController.swift */,
-				BBAC20E428F5832D005B39C8 /* AppleStoreViewController.swift */,
+				BBAC841628F5FFDE00F18648 /* ProductScreen */,
 				BB373DAB28EF261A00F270BC /* Main.storyboard */,
 				BB373DCA28EF4F7500F270BC /* StoreTabBarViewController.swift */,
-				BBAC20EC28F5D435005B39C8 /* SwiftPdfViewController.swift */,
 				BB373DCE28EF5D1300F270BC /* Colors.xcassets */,
 				BB373DAE28EF261C00F270BC /* Assets.xcassets */,
 				BB373DB028EF261D00F270BC /* LaunchScreen.storyboard */,
@@ -115,6 +113,24 @@
 				BBA8559528F574A8005EB910 /* AppleStoreVC+WkWebViewDelegate.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BBAC841628F5FFDE00F18648 /* ProductScreen */ = {
+			isa = PBXGroup;
+			children = (
+				BBAC20E428F5832D005B39C8 /* AppleStoreViewController.swift */,
+				BBAC20EC28F5D435005B39C8 /* SwiftPdfViewController.swift */,
+				BB373DD928EFA55800F270BC /* ProductViewController.swift */,
+			);
+			path = ProductScreen;
+			sourceTree = "<group>";
+		};
+		BBAC841728F6001400F18648 /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				BB373DC128EF494300F270BC /* SearchViewController.swift */,
+			);
+			path = SearchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

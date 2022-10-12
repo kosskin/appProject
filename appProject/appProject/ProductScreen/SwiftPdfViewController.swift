@@ -7,7 +7,7 @@
 import UIKit
 import WebKit
 /// экран для отображения файла swift.pdf
-class SwiftPdfViewController: UIViewController {
+final class SwiftPdfViewController: UIViewController {
     
     // MARK: Constants
     
@@ -42,7 +42,7 @@ class SwiftPdfViewController: UIViewController {
 extension SwiftPdfViewController {
     func makeWebView() -> WKWebView {
         let webView = WKWebView()
-        if let urlPdf = Bundle.main.url(forResource: "swift", withExtension: "pdf") {
+        if let urlPdf = Bundle.main.url(forResource: Constants.pdfName, withExtension: Constants.extensionPdf) {
                 print(urlPdf)
                 let request = URLRequest(url: urlPdf)
                 webView.load(request)

@@ -8,7 +8,15 @@
 import UIKit
 import WebKit
 /// экран открытия apple.com с нужным товаром
-class AppleStoreViewController: UIViewController {
+final class AppleStoreViewController: UIViewController {
+    
+    // MARK: Constants
+    
+    private enum Constants {
+        static let backButtonName = "chevron.left"
+        static let forwardButtonName = "chevron.right"
+        static let shareButtonName = "square.and.arrow.up"
+    }
 
     // MARK: Visual Components
     
@@ -16,16 +24,16 @@ class AppleStoreViewController: UIViewController {
     
     private lazy var managingToolBar = makeToolBar()
   
-    private lazy var backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"),
+    private lazy var backButton = UIBarButtonItem(image: UIImage(systemName: Constants.backButtonName),
                                                   style: .plain, target: self, action: #selector(goBackAction))
     
-    private lazy var forwardButton = UIBarButtonItem(image: UIImage(systemName: "chevron.right"),
+    private lazy var forwardButton = UIBarButtonItem(image: UIImage(systemName: Constants.forwardButtonName),
                                                      style: .plain, target: self, action: #selector(goForwardAction))
     
     private lazy var refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self,
                                                      action: #selector(refreshAction))
     
-    private lazy var shareButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"),
+    private lazy var shareButton = UIBarButtonItem(image: UIImage(systemName: Constants.shareButtonName),
                                                    style: .plain, target: self, action: #selector(shareAction))
     
     private lazy var spacer = UIBarButtonItem(systemItem: .flexibleSpace)

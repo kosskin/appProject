@@ -12,11 +12,10 @@ final class StoreTabBarViewController: UITabBarController {
     // MARK: Constants
     
     private enum Constants {
-        static let buyingItemTitle = "Buying"
-        static let forYouItemTitle = "For you"
-        static let basketItemTitle = "Basket"
+        static let buyingItemTitle = "Купить"
+        static let forYouItemTitle = "Для вас"
+        static let basketItemTitle = "Корзина"
         static let searchItemTitle = "Поиск"
-        static let tabBarColor = UIColor(named: "AppProjectTabBar")
         static let buyingImage = "laptopcomputer.and.iphone"
         static let forYouImage = "person.circle"
         static let searchImage = "magnifyingglass"
@@ -38,22 +37,30 @@ final class StoreTabBarViewController: UITabBarController {
         let searchViewController = SearchViewController()
         let basketViewController = BasketViewController()
         
-        let navController = UINavigationController(rootViewController: searchViewController)
-
-        searchViewController.navigationItem.title = Constants.searchItemTitle
-        navController.tabBarItem.title = Constants.searchItemTitle
+        let searchNavController = UINavigationController(rootViewController: searchViewController)
+        let buyingNavController = UINavigationController(rootViewController: buyingViewController)
+        let basketNavController = UINavigationController(rootViewController: basketViewController)
+        let forYouNavController = UINavigationController(rootViewController: forYouViewController)
         
-        buyingViewController.tabBarItem = UITabBarItem(title: Constants.buyingItemTitle,
+        searchViewController.navigationItem.title = Constants.searchItemTitle
+        buyingViewController.navigationItem.title = Constants.buyingItemTitle
+        forYouViewController.navigationItem.title = Constants.forYouItemTitle
+        basketNavController.navigationItem.title = Constants.basketItemTitle
+        
+        buyingNavController.tabBarItem = UITabBarItem(title: Constants.buyingItemTitle,
                                                        image: UIImage(systemName: Constants.buyingImage), tag: 0)
                 
-        forYouViewController.tabBarItem = UITabBarItem(title: Constants.forYouItemTitle,
+        forYouNavController.tabBarItem = UITabBarItem(title: Constants.forYouItemTitle,
                                                        image: UIImage(systemName: Constants.forYouImage),
                                                        tag: 1)
-        navController.tabBarItem = UITabBarItem(title: Constants.searchItemTitle,
+        
+        searchNavController.tabBarItem = UITabBarItem(title: Constants.searchItemTitle,
                                                        image: UIImage(systemName: Constants.searchImage),
                                                        tag: 2)
-        basketViewController.tabBarItem = UITabBarItem(title: Constants.basketItemTitle,
+        
+        basketNavController.tabBarItem = UITabBarItem(title: Constants.basketItemTitle,
                                                        image: UIImage(systemName: Constants.bagImage), tag: 3)
-        viewControllers = [buyingViewController, forYouViewController, navController, basketViewController]
+        
+        viewControllers = [buyingNavController, forYouNavController, searchNavController, basketNavController]
     }
 }
