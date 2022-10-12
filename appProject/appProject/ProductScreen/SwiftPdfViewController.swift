@@ -43,9 +43,8 @@ extension SwiftPdfViewController {
     func makeWebView() -> WKWebView {
         let webView = WKWebView()
         if let urlPdf = Bundle.main.url(forResource: Constants.pdfName, withExtension: Constants.extensionPdf) {
-                print(urlPdf)
-                let request = URLRequest(url: urlPdf)
-                webView.load(request)
+            let request = URLRequest(url: urlPdf)
+            webView.load(request)
             }
         return webView
     }

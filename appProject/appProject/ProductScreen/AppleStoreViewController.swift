@@ -66,10 +66,11 @@ final class AppleStoreViewController: UIViewController {
         browserWebView.addSubview(managingToolBar)
         progressView.frame = CGRect(x: 110, y: 800, width: 190, height: 30)
         browserWebView.addSubview(progressView)
-        oberver = browserWebView.observe(\.estimatedProgress, options: [.new]) { [self] _, _ in
-            progressView.progress = Float(browserWebView.estimatedProgress)
-            if progressView.progress == 1.0 {
-                progressView.isHidden = true
+        oberver = browserWebView.observe(\.estimatedProgress, options: [.new]) { [weak self] _, _ in
+            guard let self = self else { return }
+            self.progressView.progress = Float(self.browserWebView.estimatedProgress)
+            if self.progressView.progress == 1.0 {
+                self.progressView.isHidden = true
             }
         }
     }
@@ -105,7 +106,6 @@ extension AppleStoreViewController {
     func makeWebView(link: String) -> WKWebView {
         let webView = WKWebView()
             if let url = URL(string: link) {
-                print(url)
                 let request = URLRequest(url: url)
                 webView.load(request)
             }

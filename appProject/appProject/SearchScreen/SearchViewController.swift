@@ -150,10 +150,7 @@ final class SearchViewController: UIViewController {
     @objc func tapAction(sender: UITapGestureRecognizer) {
         let productViewController = ProductViewController()
         guard let index = sender.view?.tag,
-              products.indices.contains(index) else {
-            print("error!")
-            return
-        }
+              products.indices.contains(index) else { return }
         productViewController.chooseProduct = products[index]
         productViewController.imageCount = productViewController.chooseProduct.imageNames.count
         navigationController?.pushViewController(productViewController, animated: true)
