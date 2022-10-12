@@ -9,9 +9,12 @@ import UIKit
 /// экран Покупки
 final class BuyingViewController: UIViewController {
     
+    // MARK: Constants
+        
     // MARK: Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }

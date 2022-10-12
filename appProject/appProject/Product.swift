@@ -7,7 +7,8 @@
 import UIKit
 /// структура типа Product для описания продукта
 struct Product {
-    let name: String
-    let price: String
-    let imageNames: [String]
+    var name: String = ""
+    var price: String = ""
+    var imageNames: [String] = []
+    var link: String = ""
 }

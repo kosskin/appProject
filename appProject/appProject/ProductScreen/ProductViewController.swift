@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 /// экран выбранного продукта
 final class ProductViewController: UIViewController {
     
@@ -26,28 +27,31 @@ final class ProductViewController: UIViewController {
     
     // MARK: Visual Components
     
-    lazy var chooseProductLabel = makeLabel(text: chooseProductLabelText, size: 16, weight: .bold,
+    lazy var chooseProductLabel = makeLabel(text: chooseProduct.name, size: 16, weight: .bold,
                                             xCoordinate: 0, yCoordinate: 120,
                                             fontColor: UIColor(named: Constants.whiteColorName) ?? UIColor.white)
     
-    lazy var priceProductLabel = makeLabel(text: chooseProductPrice, size: 15, weight: .regular,
+    lazy var priceProductLabel = makeLabel(text: chooseProduct.price, size: 15, weight: .regular,
                                            xCoordinate: 150, yCoordinate: 150, fontColor: .systemGray)
     
     lazy var scrollOneProduct = makeScrollView()
     
-    lazy var productImageView = makeImageView(imageName: chooseProductImageViewText[0],
+    lazy var productImageView = makeImageView(imageName: chooseProduct.imageNames[0],
                                               imageRect: CGRect(x: 0, y: 0,
-                                                                width: view.bounds.width, height: 200))
+                                                                width: view.bounds.width,
+                                                                height: 200), link: chooseProduct.link)
     
-    lazy var productImageViewTwo = makeImageView(imageName: chooseProductImageViewText[1],
+    lazy var productImageViewTwo = makeImageView(imageName: chooseProduct.imageNames[1],
                                               imageRect: CGRect(x: 410, y: 0,
-                                                                width: view.bounds.width, height: 200))
+                                                                width: view.bounds.width,
+                                                                height: 200), link: chooseProduct.link)
     
-    lazy var productImageViewThree = makeImageView(imageName: chooseProductImageViewText[2],
+    lazy var productImageViewThree = makeImageView(imageName: chooseProduct.imageNames[2],
                                               imageRect: CGRect(x: 820, y: 0,
-                                                                width: view.bounds.width, height: 200))
+                                                                width: view.bounds.width,
+                                                                height: 200), link: chooseProduct.link)
     
-    lazy var smallChooseProductLabel = makeLabel(text: chooseProductLabelText, size: 12, weight: .regular,
+    lazy var smallChooseProductLabel = makeLabel(text: chooseProduct.name, size: 12, weight: .regular,
                                                  xCoordinate: 65, yCoordinate: 460, fontColor: .systemGray)
     
     lazy var basketButton = makeBasketButton()
@@ -66,12 +70,12 @@ final class ProductViewController: UIViewController {
     
     lazy var blueCirlceButton = makeViewToRoundButton()
     
+//    lazy var browserView = makeWebView()
+        
     // MARK: Public Properties
     
-    lazy var chooseProductLabelText = String()
-    lazy var chooseProductImageViewText: [String] = [String]()
-    lazy var chooseProductPrice = String()
-    lazy var imageCount = Int()
+    var imageCount = Int()
+    var chooseProduct = Product()
 
     // MARK: Life Cycle
     
@@ -113,6 +117,17 @@ final class ProductViewController: UIViewController {
         blueCirlceButton.center = sender == selectColorBlackButton ?
             selectColorBlackButton.center : selectColorGrayButton.center
     }
+    
+    @objc func imageViewTapAction(tapGestureRecognizer: UITapGestureRecognizer) {
+        let appleStoreViewController = AppleStoreViewController()
+        appleStoreViewController.appleStoreProduct = chooseProduct
+        present(appleStoreViewController, animated: true, completion: nil)
+    }
+    
+    @objc func textTapAction(tapGestureRecognizer: UITapGestureRecognizer) {
+        let swiftPdfViewController = SwiftPdfViewController()
+        present(swiftPdfViewController, animated: true, completion: nil)
+    }
 }
 
 // MARK: Factory
@@ -147,10 +162,14 @@ extension ProductViewController {
         return scrollView
     }
     
-    func makeImageView(imageName: String, imageRect: CGRect) -> UIImageView {
+    func makeImageView(imageName: String, imageRect: CGRect, link: String) -> UIImageView {
         let imageView = UIImageView(frame: imageRect)
         imageView.image = UIImage(named: imageName)
         imageView.contentMode = .scaleAspectFit
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action:
+                                                            #selector(imageViewTapAction(tapGestureRecognizer:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
         return imageView
     }
     
@@ -207,6 +226,10 @@ extension ProductViewController {
                                               range: NSRange(location: 0, length: 42))
         label.attributedText = attributedString
         label.numberOfLines = 0
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                          action: #selector(textTapAction(tapGestureRecognizer:)))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tapGestureRecognizer)
         return label
     }
     
