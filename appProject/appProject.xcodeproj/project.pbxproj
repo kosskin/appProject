@@ -23,6 +23,9 @@
 		BB373DDA28EFA55800F270BC /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB373DD928EFA55800F270BC /* ProductViewController.swift */; };
 		BB373DDE28EFBFC500F270BC /* SearchViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB373DDD28EFBFC500F270BC /* SearchViewController+Extension.swift */; };
 		BB492D6028F35515002ED7AE /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB492D5F28F35515002ED7AE /* Product.swift */; };
+		BB703C8F28F7F7FE00FDA63E /* HappyShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB703C8E28F7F7FE00FDA63E /* HappyShopViewController.swift */; };
+		BB703C9428F8064B00FDA63E /* BuyingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB703C9328F8064B00FDA63E /* BuyingPageViewController.swift */; };
+		BB703C9728F80A0A00FDA63E /* BuyingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB703C9628F80A0A00FDA63E /* BuyingHelper.swift */; };
 		BBA8559628F574A8005EB910 /* AppleStoreVC+WkWebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8559528F574A8005EB910 /* AppleStoreVC+WkWebViewDelegate.swift */; };
 		BBAC20E528F5832D005B39C8 /* AppleStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC20E428F5832D005B39C8 /* AppleStoreViewController.swift */; };
 		BBAC20EA28F5D2FC005B39C8 /* swift.pdf in Resources */ = {isa = PBXBuildFile; fileRef = BBAC20E928F5D2FC005B39C8 /* swift.pdf */; };
@@ -48,6 +51,9 @@
 		BB373DD928EFA55800F270BC /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		BB373DDD28EFBFC500F270BC /* SearchViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+Extension.swift"; sourceTree = "<group>"; };
 		BB492D5F28F35515002ED7AE /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		BB703C8E28F7F7FE00FDA63E /* HappyShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyShopViewController.swift; sourceTree = "<group>"; };
+		BB703C9328F8064B00FDA63E /* BuyingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyingPageViewController.swift; sourceTree = "<group>"; };
+		BB703C9628F80A0A00FDA63E /* BuyingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyingHelper.swift; sourceTree = "<group>"; };
 		BBA8559528F574A8005EB910 /* AppleStoreVC+WkWebViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleStoreVC+WkWebViewDelegate.swift"; sourceTree = "<group>"; };
 		BBAC20E428F5832D005B39C8 /* AppleStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleStoreViewController.swift; sourceTree = "<group>"; };
 		BBAC20E928F5D2FC005B39C8 /* swift.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = swift.pdf; sourceTree = "<group>"; };
@@ -87,7 +93,7 @@
 				BBAC20E928F5D2FC005B39C8 /* swift.pdf */,
 				BB373DA528EF261A00F270BC /* AppDelegate.swift */,
 				BB373DA728EF261A00F270BC /* SceneDelegate.swift */,
-				BB373DA928EF261A00F270BC /* BuyingViewController.swift */,
+				BB703C8D28F7F7C600FDA63E /* BuyingScreen */,
 				BB373DBE28EF492400F270BC /* ForYouViewController.swift */,
 				BB373DD228EF708100F270BC /* Extensions */,
 				BB373DC428EF497A00F270BC /* BasketViewController.swift */,
@@ -113,6 +119,17 @@
 				BBA8559528F574A8005EB910 /* AppleStoreVC+WkWebViewDelegate.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BB703C8D28F7F7C600FDA63E /* BuyingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				BB373DA928EF261A00F270BC /* BuyingViewController.swift */,
+				BB703C8E28F7F7FE00FDA63E /* HappyShopViewController.swift */,
+				BB703C9328F8064B00FDA63E /* BuyingPageViewController.swift */,
+				BB703C9628F80A0A00FDA63E /* BuyingHelper.swift */,
+			);
+			path = BuyingScreen;
 			sourceTree = "<group>";
 		};
 		BBAC841628F5FFDE00F18648 /* ProductScreen */ = {
@@ -227,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB703C8F28F7F7FE00FDA63E /* HappyShopViewController.swift in Sources */,
 				BB373DC528EF497A00F270BC /* BasketViewController.swift in Sources */,
 				BB373DCB28EF4F7500F270BC /* StoreTabBarViewController.swift in Sources */,
 				BB373DD428EF70C000F270BC /* UIView+Extension.swift in Sources */,
@@ -239,6 +257,8 @@
 				BB373DAA28EF261A00F270BC /* BuyingViewController.swift in Sources */,
 				BB373DD728EF7C0300F270BC /* UIFont+Extension.swift in Sources */,
 				BB373DA628EF261A00F270BC /* AppDelegate.swift in Sources */,
+				BB703C9728F80A0A00FDA63E /* BuyingHelper.swift in Sources */,
+				BB703C9428F8064B00FDA63E /* BuyingPageViewController.swift in Sources */,
 				BB373DDA28EFA55800F270BC /* ProductViewController.swift in Sources */,
 				BB373DA828EF261A00F270BC /* SceneDelegate.swift in Sources */,
 				BBA8559628F574A8005EB910 /* AppleStoreVC+WkWebViewDelegate.swift in Sources */,

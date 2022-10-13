@@ -137,7 +137,11 @@ final class ForYouViewController: UIViewController, UINavigationControllerDelega
         imagePickerController.allowsEditing = true
         present(imagePickerController, animated: true)
     }
-    
+}
+
+// MARK: Factory
+
+extension ForYouViewController {
     private func makeBottomView() -> UIView {
         let bottomView = UIView(frame: CGRect(x: view.bounds.origin.x, y: 125,
                                               width: view.bounds.width, height: 1))
