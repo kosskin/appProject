@@ -6,7 +6,8 @@
 //
 
 import UIKit
-/// экран поиска
+
+/// Экран поиска
 final class SearchViewController: UIViewController {
     
     // MARK: Constants
@@ -62,41 +63,30 @@ final class SearchViewController: UIViewController {
     
     private lazy var recentViewLabel = makeLabel(text: Constants.recentViewLabelText,
                                                  size: 21, weight: .bold, xCoordinate: 20, yCoordinate: 225)
-    
     private lazy var clearButton = makeButton(title: Constants.clearButtonTitle,
                                               xCoordinate: 325, yCoordinate: 225)
-    
     private lazy var blackCaseView = makeViewWithProduct(name: Constants.blackCaseViewName,
                                                     xCoordinate: 0, yCoordinate: 0,
                                                     textLabel: Constants.blackCaseViewLabelText)
-    
     private lazy var watchView = makeViewWithProduct(name: Constants.watchViewName,
                                                     xCoordinate: 150, yCoordinate: 0,
                                                     textLabel: Constants.watchViewLabelText)
-    
     private lazy var brownCaseView = makeViewWithProduct(name: Constants.brownCaseViewName,
                                                     xCoordinate: 300, yCoordinate: 0,
                                                     textLabel: Constants.brownCaseViewLabelText)
-    
     private lazy var iPhoneView = makeViewWithProduct(name: Constants.iPhoneViewName,
                                                       xCoordinate: 450, yCoordinate: 0,
                                                       textLabel: Constants.iPhoneViewLabelText)
-
     private lazy var variableRequestLabel = makeLabel(text: Constants.variableRequestLabelText,
                                                       size: 21, weight: .bold, xCoordinate: 28, yCoordinate: 515)
-    
     private lazy var airPodsView = makeViewWithSearchAndLabel(text: Constants.airPodsViewText,
                                                               xCoordinate: 5, yCoordinate: 560)
-    
     private lazy var appleCareView = makeViewWithSearchAndLabel(text: Constants.appleCareViewText,
                                                                 xCoordinate: 5, yCoordinate: 610)
-    
     private lazy var beatsView = makeViewWithSearchAndLabel(text: Constants.beatsViewText,
                                                             xCoordinate: 5, yCoordinate: 660)
-    
     private lazy var compareIphoneView = makeViewWithSearchAndLabel(text: Constants.compareIphoneViewText,
                                                                 xCoordinate: 5, yCoordinate: 710)
-    
     private lazy var productScrollView = makeScrollView()
     
     // MARK: Private Properties

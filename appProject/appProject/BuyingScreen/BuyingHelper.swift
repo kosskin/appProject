@@ -6,9 +6,10 @@
 //
 
 import UIKit
-/// структура для данных на вью контрллере
+
+/// Структура для данных на вью контрллере
 struct BuyingHelper {
-    var image = UIImage()
-    var mainLabel = String()
-    var secondaryLabel = String()
+    var imageName = String()
+    var main = String()
+    var secondary = String()
 }

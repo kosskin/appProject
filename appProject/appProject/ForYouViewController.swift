@@ -6,7 +6,8 @@
 //
 //
 import UIKit
-/// экран для вас
+
+/// Экран для вас
 final class ForYouViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: Constants
@@ -26,7 +27,6 @@ final class ForYouViewController: UIViewController, UINavigationControllerDelega
         static let showAllText = "Показать все"
         static let airPodsImageName = "apple-airpod"
         static let arrowButtonName = "chevron.right"
-        
         // Image height/width for Large NavBar state
         static let ImageSizeForLargeState: CGFloat = 40
         // Margin from right anchor of safe area to right anchor of Image
@@ -46,42 +46,26 @@ final class ForYouViewController: UIViewController, UINavigationControllerDelega
     // MARK: UI Elements
     
     lazy var forYouScrollView = makeScrollView()
-    
     lazy var bottomView = makeBottomView()
-    
     lazy var deliveryStatusView = makeDeliveryStatusView()
-    
     lazy var whatNewLabel = makeLabel(xCoordinate: 20, yCoordinate: 140,
                                       text: Constants.whatNewLabelText, size: 26)
-    
     lazy var processingLabel = makeProcessLabel(xCoordinate: 16, text: Constants.processedText, color: .black)
-    
     lazy var sentLabel = makeProcessLabel(xCoordinate: 160, text: Constants.sentText, color: .black)
-    
     lazy var deliveredLabel = makeProcessLabel(xCoordinate: 300, text: Constants.deliveredText, color: .systemGray)
-    
     lazy var recomendationLabel = makeLabel(xCoordinate: 22, yCoordinate: 440,
                                             text: Constants.recomendasionText, size: 24)
-    
     lazy var yourDevices = makeLabel(xCoordinate: 22, yCoordinate: 690,
                                      text: Constants.yourDeviceText, size: 26)
-    
     lazy var showAll = makeShowAllLabel()
-    
     lazy var deliveryArrowButton = makeArrowButton(frame: CGRect(x: 350, y: 40, width: 10, height: 18),
                                                    textColor: .systemGray5)
-    
     lazy var recomedationArrowButton = makeArrowButton(frame: CGRect(x: 380, y: 595, width: 10, height: 15),
                                                        textColor: .systemGray)
-    
     lazy var recomendationView = makeRecomendationView()
-    
     lazy var redSquareImageView = makeRedSqureImageView()
-    
     lazy var deliveryProgressView = makeProgressView()
-    
     lazy var imageView = UIImageView(image: UIImage(named: "image_name"))
-    
     lazy var avatarImageView = makeAvatarImageView()
     
     // MARK: Life Cycle

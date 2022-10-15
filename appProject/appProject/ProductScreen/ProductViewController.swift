@@ -7,7 +7,8 @@
 
 import UIKit
 import WebKit
-/// экран выбранного продукта
+
+/// Экран выбранного продукта
 final class ProductViewController: UIViewController {
     
     private enum Constants {
@@ -30,47 +31,32 @@ final class ProductViewController: UIViewController {
     lazy var chooseProductLabel = makeLabel(text: chooseProduct.name, size: 16, weight: .bold,
                                             xCoordinate: 0, yCoordinate: 120,
                                             fontColor: UIColor(named: Constants.whiteColorName) ?? UIColor.white)
-    
     lazy var priceProductLabel = makeLabel(text: chooseProduct.price, size: 15, weight: .regular,
                                            xCoordinate: 150, yCoordinate: 150, fontColor: .systemGray)
-    
     lazy var scrollOneProduct = makeScrollView()
-    
     lazy var productImageView = makeImageView(imageName: chooseProduct.imageNames[0],
                                               imageRect: CGRect(x: 0, y: 0,
                                                                 width: view.bounds.width,
                                                                 height: 200), link: chooseProduct.link)
-    
     lazy var productImageViewTwo = makeImageView(imageName: chooseProduct.imageNames[1],
                                               imageRect: CGRect(x: 410, y: 0,
                                                                 width: view.bounds.width,
                                                                 height: 200), link: chooseProduct.link)
-    
     lazy var productImageViewThree = makeImageView(imageName: chooseProduct.imageNames[2],
                                               imageRect: CGRect(x: 820, y: 0,
                                                                 width: view.bounds.width,
                                                                 height: 200), link: chooseProduct.link)
-    
     lazy var smallChooseProductLabel = makeLabel(text: chooseProduct.name, size: 12, weight: .regular,
                                                  xCoordinate: 65, yCoordinate: 460, fontColor: .systemGray)
-    
     lazy var basketButton = makeBasketButton()
-    
     lazy var viewWithCheck = makeViewWithImageView()
-    
     lazy var longTextLabel = makeViewLongText()
-    
     lazy var boxImageView = makeImageViewBox()
-    
     lazy var selectColorGrayButton = makeRoundedButton(xCoordinate: 160,
                                                        backColor: .lightGray, selected: false)
-    
     lazy var selectColorBlackButton = makeRoundedButton(xCoordinate: 210,
                                                         backColor: .systemGray5, selected: true)
-    
     lazy var blueCirlceButton = makeViewToRoundButton()
-    
-//    lazy var browserView = makeWebView()
         
     // MARK: Public Properties
     

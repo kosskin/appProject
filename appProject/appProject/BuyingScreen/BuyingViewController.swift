@@ -6,11 +6,10 @@
 //
 
 import UIKit
-/// экран Покупки
+
+/// Экран Покупки
 final class BuyingViewController: UIViewController {
-    
-    // MARK: Constants
-        
+            
     // MARK: Life cycle
 
     override func viewDidLoad() {

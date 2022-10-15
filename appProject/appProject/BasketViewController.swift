@@ -6,7 +6,8 @@
 //
 
 import UIKit
-/// экран корзина
+
+/// Экран корзина
 final class BasketViewController: UIViewController {
 
     // MARK: Life cycle

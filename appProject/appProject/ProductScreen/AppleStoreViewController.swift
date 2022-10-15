@@ -7,7 +7,8 @@
 
 import UIKit
 import WebKit
-/// экран открытия apple.com с нужным товаром
+
+/// Экран открытия apple.com с нужным товаром
 final class AppleStoreViewController: UIViewController {
     
     // MARK: Constants
@@ -21,27 +22,18 @@ final class AppleStoreViewController: UIViewController {
     // MARK: Visual Components
     
     private lazy var browserWebView = makeWebView(link: appleStoreProduct.link)
-    
     private lazy var managingToolBar = makeToolBar()
-  
     private lazy var backButton = UIBarButtonItem(image: UIImage(systemName: Constants.backButtonName),
                                                   style: .plain, target: self, action: #selector(goBackAction))
-    
     private lazy var forwardButton = UIBarButtonItem(image: UIImage(systemName: Constants.forwardButtonName),
                                                      style: .plain, target: self, action: #selector(goForwardAction))
-    
     private lazy var refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self,
                                                      action: #selector(refreshAction))
-    
     private lazy var shareButton = UIBarButtonItem(image: UIImage(systemName: Constants.shareButtonName),
                                                    style: .plain, target: self, action: #selector(shareAction))
-    
     private lazy var spacer = UIBarButtonItem(systemItem: .flexibleSpace)
-    
     private var sharePageActivityViewController: UIActivityViewController?
-    
     private var oberver: NSKeyValueObservation?
-    
     private let progressView = UIProgressView()
     
     // MARK: Public Properties

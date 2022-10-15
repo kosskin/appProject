@@ -6,35 +6,39 @@
 //
 
 import UIKit
-/// всплывающие экраны "счастливых покупок"
+
+/// Всплывающие экраны "счастливых покупок"
 final class HappyShopViewController: UIViewController {
     
     // MARK: UI Elements
     
     private lazy var mainImageView = makeImageView()
-    
     lazy var mainLabel = makeMainLabel()
-    
     lazy var secondaryLabel = makeSecondaryLabel()
-    
-    private lazy var subView: [UIView] = [mainImageView, mainLabel, secondaryLabel]
+    private lazy var subViews: [UIView] = [mainImageView, mainLabel, secondaryLabel]
     
     // MARK: Initializers
     
     init(imageAndTexts: BuyingHelper) {
         super.init(nibName: nil, bundle: nil)
-        edgesForExtendedLayout = []
-        mainImageView.image = imageAndTexts.image
-        mainLabel.text = imageAndTexts.mainLabel
-        secondaryLabel.text = imageAndTexts.secondaryLabel
-        
-        for view in subView {
-            self.view.addSubview(view)
-        }
+        setUpViews(imageAndTexts: imageAndTexts)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // Private Methods
+    
+    private func setUpViews(imageAndTexts: BuyingHelper) {
+        edgesForExtendedLayout = []
+        mainImageView.image = UIImage(named: imageAndTexts.imageName)
+        mainLabel.text = imageAndTexts.main
+        secondaryLabel.text = imageAndTexts.secondary
+        
+        for view in subViews {
+            self.view.addSubview(view)
+        }
     }
 }
 

@@ -6,15 +6,16 @@
 //
 
 import UIKit
-/// конфигурация pageControllers
+
+/// Kонфигурация pageControllers
 final class BuyingPageViewController: UIPageViewController {
     
     // MARK: Constants
     
     private enum Constants {
-        static let shopImage = UIImage(named: "shop1")
-        static let girlImage = UIImage(named: "shop2")
-        static let buyingImage = UIImage(named: "shop3")
+        static let shopImageName = "shop1"
+        static let girlImageName = "shop2"
+        static let buyingImageName = "shop3"
         static let shopMainText = "Best shopping"
         static let shopSecondaryText = "Buy best thing online"
         static let girlMainText = "Good price"
@@ -26,17 +27,13 @@ final class BuyingPageViewController: UIPageViewController {
     // MARK: UI Elements
     
     lazy var buyingViewControllers = makeViewControllers()
-    
     lazy var nextButton = makeNextButton()
-    
     lazy var skipButton = makeSkipButton()
-    
     lazy var getStartedButton = makeGetStartedButton()
-        
+
     // MARK: Private Properties
     
     private var pages: [BuyingHelper] = []
-    
     private var currentIndex = 0
     
     // MARK: Initializers
@@ -77,15 +74,12 @@ final class BuyingPageViewController: UIPageViewController {
     }
     
     private func setUpPages() {
-        guard let shopImage = Constants.shopImage,
-              let girlImage = Constants.girlImage,
-              let buyingImage = Constants.buyingImage else { return }
-        let shop = BuyingHelper(image: shopImage, mainLabel: Constants.shopMainText,
-                                secondaryLabel: Constants.shopSecondaryText)
-        let girl = BuyingHelper(image: girlImage, mainLabel: Constants.girlMainText,
-                                secondaryLabel: Constants.girlSecondaryText)
-        let buying = BuyingHelper(image: buyingImage, mainLabel: Constants.buyingMainText,
-                                  secondaryLabel: Constants.buyingSecondaryText)
+        let shop = BuyingHelper(imageName: Constants.shopImageName, main: Constants.shopMainText,
+                                secondary: Constants.shopSecondaryText)
+        let girl = BuyingHelper(imageName: Constants.girlImageName, main: Constants.girlMainText,
+                                secondary: Constants.girlSecondaryText)
+        let buying = BuyingHelper(imageName: Constants.buyingImageName, main: Constants.buyingMainText,
+                                  secondary: Constants.buyingSecondaryText)
         pages.append(shop)
         pages.append(girl)
         pages.append(buying)
