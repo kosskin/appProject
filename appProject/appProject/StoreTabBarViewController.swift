@@ -6,7 +6,8 @@
 //
 
 import UIKit
-/// класс для отображения экранов "Поиск", "Покупки", "Корзина", "Для вас" с использованием TabBar
+
+/// Класс для отображения экранов "Поиск", "Покупки", "Корзина", "Для вас" с использованием TabBar
 final class StoreTabBarViewController: UITabBarController {
 
     // MARK: Constants

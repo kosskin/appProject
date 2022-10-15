@@ -6,7 +6,8 @@
 //
 import UIKit
 import WebKit
-/// экран для отображения файла swift.pdf
+
+/// Экран для отображения файла swift.pdf
 final class SwiftPdfViewController: UIViewController {
     
     // MARK: Constants
